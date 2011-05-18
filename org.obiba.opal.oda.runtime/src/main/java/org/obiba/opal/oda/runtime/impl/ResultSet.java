@@ -17,15 +17,13 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
 import org.eclipse.datatools.connectivity.oda.IResultSet;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
 import org.eclipse.datatools.connectivity.oda.OdaException;
-import org.obiba.opal.web.model.Magma.ValueDto;
-import org.obiba.opal.web.model.Magma.ValueSetDto;
+import org.obiba.opal.web.model.Magma.ValueSetsDto;
 import org.obiba.opal.web.model.Magma.VariableEntityDto;
 
 /**
@@ -38,15 +36,13 @@ public class ResultSet implements IResultSet {
 
   private static final int VALUE_SET_BUFFER_LENGTH = 100;
 
-  private final SimpleDateFormat DATETIME_ISO_8601 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-
-  private Logger log = Logger.getLogger(ResultSet.class.getName());
+  private final SimpleDateFormat DATETIME_ISO_8601 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZ");
 
   private int maxRows;
 
   private int currentRowId;
 
-  private ValueSetDto currentValueSet;
+  private ValueSetsDto.ValueSetDto currentValueSet;
 
   private Query query;
 
@@ -54,7 +50,7 @@ public class ResultSet implements IResultSet {
 
   private List<VariableEntityDto> entities;
 
-  private List<ValueSetDto> valueSetBuffer;
+  private ValueSetsDto valueSetBuffer;
 
   private int valueSetOffset;
 
@@ -115,7 +111,7 @@ public class ResultSet implements IResultSet {
     return entities;
   }
 
-  private ValueSetDto getValueSetAt(int index) throws OdaException {
+  private ValueSetsDto.ValueSetDto getValueSetAt(int index) throws OdaException {
     if(valueSetBuffer == null) {
       valueSetOffset = 0;
       valueSetBuffer = query.getValueSets(0, VALUE_SET_BUFFER_LENGTH);
@@ -123,7 +119,7 @@ public class ResultSet implements IResultSet {
       valueSetOffset += VALUE_SET_BUFFER_LENGTH;
       valueSetBuffer = query.getValueSets(valueSetOffset, VALUE_SET_BUFFER_LENGTH);
     }
-    return valueSetBuffer.get(index - valueSetOffset);
+    return valueSetBuffer.getValueSets(index - valueSetOffset);
   }
 
   /**
@@ -145,9 +141,9 @@ public class ResultSet implements IResultSet {
 
     String rval = null;
     if(index == 1) {
-      rval = currentValueSet.getEntity().getIdentifier();
+      rval = currentValueSet.getIdentifier();
     } else {
-      ValueDto value = currentValueSet.getValues(columnToVariableIndices[index - 1]);
+      ValueSetsDto.ValueDto value = currentValueSet.getValues(columnToVariableIndices[index - 1]);
       if(value.hasValue()) {
         rval = value.getValue();
       }
@@ -376,7 +372,7 @@ public class ResultSet implements IResultSet {
   }
 
   public int findValueSetColumn(String columnName) throws OdaException {
-    List<String> variables = currentValueSet.getVariablesList();
+    List<String> variables = valueSetBuffer.getVariablesList();
     for(int i = 0; i < variables.size(); i++) {
       if(variables.get(i).equals(columnName)) {
         return i;
