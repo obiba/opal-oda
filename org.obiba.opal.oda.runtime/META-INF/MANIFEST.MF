@@ -9,7 +9,7 @@ Bundle-ClassPath: .,
 Bundle-Localization: plugin
 Export-Package: com.google.protobuf,
  org.obiba.opal.oda.runtime,
- org.obiba.opal.oda.runtime.impl;version="1.0.0.SNAPSHOT",
+ org.obiba.opal.oda.runtime.impl,
  org.obiba.opal.rest.client.magma,
  org.obiba.opal.web.model
 Require-Bundle: org.eclipse.core.runtime,
