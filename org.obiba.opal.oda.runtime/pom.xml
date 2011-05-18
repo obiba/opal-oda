@@ -8,8 +8,8 @@
 
   <parent>
     <version>1.2.0-SNAPSHOT</version>
-    <groupId>org.obiba.opal</groupId>
-    <artifactId>opal-oda-parent</artifactId>
+    <groupId>org.obiba.opal.oda</groupId>
+    <artifactId>opal-oda</artifactId>
   </parent>
 
   <build>
