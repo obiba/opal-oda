@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.obiba.opal.oda.category" label="Opal Connector"/>
+   <feature url="features/org.obiba.opal.oda.feature_1.1.1.SNAPSHOT.jar" id="org.obiba.opal.oda.feature" version="1.1.1.SNAPSHOT">
+      <category name="org.obiba.opal.oda.category"/>
+   </feature>
+</site>

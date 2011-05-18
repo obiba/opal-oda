@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %plugin.name
+Bundle-SymbolicName: org.obiba.opal.oda.runtime; singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-ClassPath: .,
+ src/main/java,
+ target/dependency/opal-rest-client-1.6-SNAPSHOT-jar-with-dependencies.jar
+Bundle-Localization: plugin
+Export-Package: com.google.protobuf,
+ org.obiba.opal.oda.runtime,
+ org.obiba.opal.oda.runtime.impl;version="1.0.0.SNAPSHOT",
+ org.obiba.opal.rest.client.magma,
+ org.obiba.opal.web.model
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda;bundle-version="[3.2.0,4.0.0)",
+ org.eclipse.datatools.connectivity.oda.profile;bundle-version="[3.2.0,4.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: OBiBa

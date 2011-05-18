@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %plugin.name
+Bundle-SymbolicName: org.obiba.opal.oda.designer; singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Activator: org.obiba.opal.oda.designer.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.datatools.connectivity.oda.design.ui;bundle-version="[3.2.0,4.0.0)",
+ org.obiba.opal.oda.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.obiba.opal.oda.designer,
+ org.obiba.opal.oda.designer.impl
+Bundle-Vendor: OBiBa

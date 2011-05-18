@@ -1,0 +1,5 @@
+<project>
+	<copy todir="." flatten="true">
+		<file file="${user.home}/.m2/repository/org/obiba/opal/opal-rest-client/1.5-SNAPSHOT/opal-rest-client-1.5-SNAPSHOT-jar-with-dependencies.jar"/>
+	</copy>
+</project>
