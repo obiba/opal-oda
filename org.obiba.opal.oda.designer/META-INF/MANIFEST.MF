@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %plugin.name
 Bundle-SymbolicName: org.obiba.opal.oda.designer; singleton:=true
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.0
 Bundle-Activator: org.obiba.opal.oda.designer.Activator
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
