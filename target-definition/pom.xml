@@ -9,7 +9,7 @@
   <parent>
     <groupId>org.obiba.opal.oda</groupId>
     <artifactId>opal-oda</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
   </parent>
 
   <build>
