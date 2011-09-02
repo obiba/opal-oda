@@ -7,7 +7,7 @@
   <packaging>eclipse-update-site</packaging>
 
   <parent>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
     <groupId>org.obiba.opal.oda</groupId>
     <artifactId>opal-oda</artifactId>
   </parent>
