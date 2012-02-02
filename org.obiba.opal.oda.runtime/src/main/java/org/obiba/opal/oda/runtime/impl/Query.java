@@ -46,8 +46,6 @@ public class Query implements IQuery {
 
   public static final String SELECT = "SELECT";
 
-  public static final String WHERE = "WHERE";
-
   private int maxRows;
 
   private String preparedText;
@@ -104,14 +102,13 @@ public class Query implements IQuery {
     URI uri = addNonNullQuery(//
     fromBase("valueSets"),//
     "select", getSelect(),//
-    "where", getWhere(),//
     "offset", (offset == null ? null : offset.toString()),//
     "limit", (limit == null ? null : limit.toString())).build();
     return connection.getOpal().getResource(ValueSetsDto.class, uri, ValueSetsDto.newBuilder());
   }
 
   public List<VariableEntityDto> getEntities() throws OdaException {
-    URI uri = addNonNullQuery(fromBase("entities"), "script", getWhere()).build();
+    URI uri = addNonNullQuery(fromBase("entities")).build();
     return connection.getOpal().getResources(VariableEntityDto.class, uri, VariableEntityDto.newBuilder());
   }
 
@@ -156,10 +153,6 @@ public class Query implements IQuery {
 
   public String getSelect() {
     return properties.get(SELECT);
-  }
-
-  public String getWhere() {
-    return properties.get(WHERE);
   }
 
   public Connection getConnection() {

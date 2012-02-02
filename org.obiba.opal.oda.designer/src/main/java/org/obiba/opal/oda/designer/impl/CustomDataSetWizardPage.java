@@ -65,8 +65,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
 
   private Text selectTextField;
 
-  private Text whereTextField;
-
   private Text queryTextField;
 
   /**
@@ -155,20 +153,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
     });
 
     fieldLabel = new Label(composite, SWT.NONE);
-    fieldLabel.setText("&Entities Filter:");
-
-    whereTextField = new Text(composite, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-    data = new GridData(GridData.FILL_HORIZONTAL);
-    data.heightHint = 100;
-    whereTextField.setLayoutData(data);
-    whereTextField.addModifyListener(new ModifyListener() {
-      public void modifyText(ModifyEvent e) {
-        validateData();
-        updateQueryText();
-      }
-    });
-
-    fieldLabel = new Label(composite, SWT.NONE);
     fieldLabel.setText("&Query Text:");
     fieldLabel.setVisible(false);
 
@@ -208,9 +192,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
         txt.append("*");
       }
       txt.append(" from '").append(getDatasourceName()).append(".").append(getTableName()).append("'");
-      if(getWhereText() != null && getWhereText().trim().length() > 0) {
-        txt.append(" where \"").append(getWhereText()).append("\"");
-      }
     }
     queryTextField.setText(txt.toString());
   }
@@ -291,13 +272,8 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
       String value = dataSetDesign.getPublicProperties().findProperty(Query.SELECT).getValue();
       if(value != null) selectTextField.setText(value);
     }
-    if(dataSetDesign.getPublicProperties().findProperty(Query.WHERE) != null) {
-      String value = dataSetDesign.getPublicProperties().findProperty(Query.WHERE).getValue();
-      if(value != null) whereTextField.setText(value);
-    }
 
-    // query text is: select <select statement: js or variable name list> from <datasource>.<table> where <where
-    // statement: js>
+    // query text is: select <select statement: js or variable name list> from <datasource>.<table>
     queryTextField.setText(queryText);
 
     validateData();
@@ -326,10 +302,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
 
   private String getSelectText() {
     return selectTextField.getText();
-  }
-
-  private String getWhereText() {
-    return whereTextField.getText();
   }
 
   /**
@@ -406,7 +378,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
     prop.setProperty(Query.DATASOURCE, "");
     prop.setProperty(Query.TABLE, "");
     prop.setProperty(Query.SELECT, "");
-    prop.setProperty(Query.WHERE, "");
 
     return prop;
   }
@@ -430,7 +401,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
     dataSetDesign.getPublicProperties().findProperty(Query.DATASOURCE).setNameValue(Query.DATASOURCE, getDatasourceName());
     dataSetDesign.getPublicProperties().findProperty(Query.TABLE).setNameValue(Query.TABLE, getTableName());
     dataSetDesign.getPublicProperties().findProperty(Query.SELECT).setNameValue(Query.SELECT, getSelectText());
-    dataSetDesign.getPublicProperties().findProperty(Query.WHERE).setNameValue(Query.WHERE, getWhereText());
 
     // dataSetDesign.
     try {
@@ -458,7 +428,6 @@ public class CustomDataSetWizardPage extends DataSetWizardPage {
     query.setProperty(Query.DATASOURCE, getDatasourceName());
     query.setProperty(Query.TABLE, getTableName());
     query.setProperty(Query.SELECT, getSelectText());
-    query.setProperty(Query.WHERE, getWhereText());
 
     try {
       IResultSetMetaData md = query.getMetaData();

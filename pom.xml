@@ -6,7 +6,7 @@
   <groupId>org.obiba.opal.oda</groupId>
   <artifactId>opal-oda</artifactId>
   <packaging>pom</packaging>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
 
   <properties>
     <tycho-version>0.12.0</tycho-version>

@@ -2,7 +2,7 @@
 <feature
       id="org.obiba.opal.oda.feature"
       label="Opal ODA Connector and Designer"
-      version="1.2.0"
+      version="1.2.1"
       provider-name="OBiBa">
 
    <description>
