@@ -7,7 +7,7 @@
   <packaging>eclipse-feature</packaging>
 
   <parent>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <groupId>org.obiba.opal.oda</groupId>
     <artifactId>opal-oda</artifactId>
   </parent>

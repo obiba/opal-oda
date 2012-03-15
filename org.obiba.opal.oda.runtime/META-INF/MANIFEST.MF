@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %plugin.name
 Bundle-SymbolicName: org.obiba.opal.oda.runtime; singleton:=true
-Bundle-Version: 1.2.1
+Bundle-Version: 1.2.2
 Bundle-ClassPath: .,
  src/main/java,
  target/libs/opal-rest-client-1.8-SNAPSHOT-jar-with-dependencies.jar

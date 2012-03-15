@@ -27,7 +27,6 @@ import org.eclipse.datatools.connectivity.oda.OdaException;
 import org.eclipse.datatools.connectivity.oda.SortSpec;
 import org.eclipse.datatools.connectivity.oda.spec.QuerySpecification;
 import org.obiba.opal.rest.client.magma.UriBuilder;
-import org.obiba.opal.web.model.Magma.ValueSetDto;
 import org.obiba.opal.web.model.Magma.ValueSetsDto;
 import org.obiba.opal.web.model.Magma.VariableDto;
 import org.obiba.opal.web.model.Magma.VariableEntityDto;
@@ -91,11 +90,6 @@ public class Query implements IQuery {
     URI uri = addNonNullQuery(fromBase("variables"), "script", getSelect()).build();
     List<VariableDto> variables = connection.getOpal().getResources(VariableDto.class, uri, VariableDto.newBuilder());
     return new ResultSetMetaData(variables);
-  }
-
-  public ValueSetDto getValueSet(String identifier) throws OdaException {
-    URI uri = addNonNullQuery(fromBase("valueSet", identifier), "script", getSelect()).build();
-    return connection.getOpal().getResource(ValueSetDto.class, uri, ValueSetDto.newBuilder());
   }
 
   public ValueSetsDto getValueSets(Integer offset, Integer limit) throws OdaException {
