@@ -7,7 +7,7 @@
   <packaging>eclipse-plugin</packaging>
 
   <parent>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <groupId>org.obiba.opal.oda</groupId>
     <artifactId>opal-oda</artifactId>
   </parent>
@@ -28,7 +28,7 @@
                 <artifactItem>
                   <groupId>org.obiba.opal</groupId>
                   <artifactId>opal-rest-client</artifactId>
-                  <version>1.8-SNAPSHOT</version>
+                  <version>1.10-SNAPSHOT</version>
                   <classifier>jar-with-dependencies</classifier>
                 </artifactItem>
               </artifactItems>

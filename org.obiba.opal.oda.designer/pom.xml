@@ -7,7 +7,7 @@
   <packaging>eclipse-plugin</packaging>
 
   <parent>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <groupId>org.obiba.opal.oda</groupId>
     <artifactId>opal-oda</artifactId>
   </parent>
